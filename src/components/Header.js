@@ -2,6 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
+import { baseUrl } from "../config";
+
+
 const loggedInUser = () => {
   //authetication api
   return true;
@@ -31,20 +34,20 @@ const Header = () => {
         <div>
           <ul className="nav-items flex text-white p-1">
             <li className=" m-2 font-medium cursor-pointer  ">
-              <Link to="/">Home</Link>
+              <Link to={baseUrl + "/"}>Home</Link>
             </li>
             <li className=" m-2 font-medium cursor-pointer  ">
-            <Link to="/recipes">Recipes</Link></li>
+            <Link to={baseUrl + "/recipes"}>Recipes</Link></li>
             {/* <li className=" m-2 font-medium cursor-pointer  ">Pages</li>
             <li className=" m-2 font-medium cursor-pointer  ">Blog</li> */}
             <li className=" m-2 font-medium cursor-pointer  ">
-              <Link to="/contact">Contact</Link>
+              <Link to={baseUrl + "/contact"}>Contact</Link>
             </li>
             <li className=" m-2 font-medium cursor-pointer  ">
-              <Link to="/about">About</Link>
+              <Link to={baseUrl + "/about"}>About</Link>
             </li>
             <li className=" m-2 font-medium cursor-pointer  ">
-              <Link to="/instamart">InstaMart</Link>
+              <Link to={baseUrl + "/instamart"}>InstaMart</Link>
             </li>
             <li className=" m-2 font-medium cursor-pointer  ">Cart</li>
             {/* <button className="btn">Submit Recipe</button> */}

@@ -7,6 +7,7 @@ import { filterData } from "../utils/helper";
 import useGetRestaurants from "../utils/useGetRestaurants";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext"
+import { baseUrl } from "../config";
 const Body = () => {
   const [searchTxt, setSearchTxt] = useState([]);
   const { filteredRestaurants, allRestaurants, setFilteredRestaurants } = useGetRestaurants();
@@ -66,7 +67,7 @@ const Body = () => {
         ) : (
           filteredRestaurants.map((restaurant) => (
             <Link
-              to={"/restaurant/" + restaurant.info.id}
+              to={baseUrl + "/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
             >
               <RestaurantCard {...restaurant.info} />

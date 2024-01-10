@@ -1,8 +1,8 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
 
 import UserContext from "./utils/UserContext";
 import Header from "./components/Header";
@@ -16,43 +16,41 @@ import Profile from "./components/Profile";
 import Recipie from "./components/Recipie";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
-
 const Instamart = lazy(() => import("./components/Instamart"));
 
 const appRouter = createBrowserRouter([
   {
-    path: "/",
-    element: <App/>,
-    errorElement: <Error />,
+    path: "/FoodHub---food-app",
+    element: <App />,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Body />,
       },
       {
-        path: "/about",
+        path: "about", // Relative path without the leading '/'
         element: <About />,
         children: [
           {
-            path: "Profile",
+            index: true,
             element: <Profile />,
           },
         ],
       },
       {
-        path: "/contact",
+        path: "contact", // Relative path without the leading '/'
         element: <Contact />,
       },
       {
-        path: "/recipes",
+        path: "recipes", // Relative path without the leading '/'
         element: <Recipie />,
       },
       {
-        path: "/restaurant/:id",
+        path: "restaurant/:id", // Relative path without the leading '/'
         element: <RestaurantMenu />,
       },
       {
-        path: "/instamart",
+        path: "instamart", // Relative path without the leading '/'
         element: (
           <Suspense fallback={<h1>Loading InstaMart... ...</h1>}>
             <Instamart />
@@ -63,14 +61,11 @@ const appRouter = createBrowserRouter([
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={appRouter} />
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
