@@ -1,5 +1,6 @@
 import "./error.css";
 import { useRouteError } from "react-router-dom";
+import { baseUrl } from "../config";
 
 const Error = () => {
 	const error= useRouteError();
@@ -11,7 +12,7 @@ const Error = () => {
 				<h1>{error.status}</h1>
 				<h2>{error.statusText}</h2>
 			</div>
-			<a href="/">Homepage</a>
+			<a href={baseUrl + "/"}>Homepage</a>
 		</div>
 	</div>
     )
