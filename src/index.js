@@ -20,7 +20,7 @@ const Instamart = lazy(() => import("./components/Instamart"));
 
 const appRouter = createBrowserRouter([
   {
-    path: "/FoodHub---food-app",
+    path: "/FoodHub-Food-App",
     errorElement: <Error />,
     element: <App />,
     children: [
