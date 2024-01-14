@@ -4,12 +4,8 @@ import { MenuShimmer } from "./Shimmer";
 import { IMG_URL } from "../config";
 import About from "./About";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-
-// function filterfood(searchfood,resTempMenu ){
-//   const filterdata = resTempMenu.filter((food)=>{
-//     return food
-//   })
-// }
+import { addItem } from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 
 const RestaurantMenu = () => {
   const params = useParams();
@@ -18,17 +14,23 @@ const RestaurantMenu = () => {
   const [searchfood, setSearchfood] = useState("");
 
   const { restaurant, resTempMenu, setResTempMenu } = useRestaurantMenu(id);
+  const dispatch = useDispatch();
+
+  const addFoodItem = (item) => {
+    dispatch(addItem(item));
+  }
 
   if (!restaurant || !resTempMenu) return null;
 
   return restaurant.length === 0 ? (
     <MenuShimmer />
   ) : (
-    <div className="max-w-[800px] mx-auto my-0">
+    <div className="max-w-[800px] mx-auto my-0 ">
       <div className=" my-7 mx-0 flex gap-7">
         <img
           className="w-48 h-48 "
-          src={IMG_URL + restaurant?.cloudinaryImageId} alt="restaurant"
+          src={IMG_URL + restaurant?.cloudinaryImageId}
+          alt="restaurant"
         ></img>
         <div>
           <h1 className=" font-medium ">{restaurant?.name}</h1>
@@ -51,10 +53,7 @@ const RestaurantMenu = () => {
             setSearchfood(e.target.value);
           }}
         ></input>
-        <button
-          className="btn2"
-          onClick={() => {}}
-        >
+        <button className="btn2" onClick={() => {}}>
           Search
         </button>
       </div>
@@ -62,7 +61,7 @@ const RestaurantMenu = () => {
       {Object.values(resTempMenu).map((res) =>
         res?.card?.card?.itemCards?.map((item) => (
           <div key={item?.card?.info?.id} className="flex flex-col py-4 px-0">
-            <div className=" bg-[#e9e9e93b] flex flex-row justify-between py-5 px-0 rounded-md">
+            <div className="relative bg-[#e9e9e93b] h-40 flex flex-row justify-between py-5 px-0 rounded-md">
               <div className="">
                 <h3>{item?.card?.info?.name}</h3>
                 {item?.card?.info?.price ? (
@@ -73,15 +72,20 @@ const RestaurantMenu = () => {
                   <h4>Price information not available</h4>
                 )}
                 <p>{item?.card?.info?.description}</p>
+                <button className="bg-white rounded-md absolute bottom-1 right-10 text-sm text-orange-700 font-bold px-8 py-1 border-2 border-slate-300 hover:border-slate-600 "
+                onClick={() => addFoodItem(item)}
+                >
+                  ADD
+                </button>
               </div>
-              <div className=" w-32 h-24 ">
-                {item?.card?.info?.imageId ? (
-                  <img
-                    className=" w-full h-full bg-cover"
-                    src={IMG_URL + item?.card?.info?.imageId} alt="menuImg"
-                  ></img>
-                ) : null}
-              </div>
+
+              {item?.card?.info?.imageId ? (
+                <img
+                  className=" w-48 bg-center"
+                  src={IMG_URL + item?.card?.info?.imageId}
+                  alt="menuImg"
+                ></img>
+              ) : null}
             </div>
           </div>
         ))

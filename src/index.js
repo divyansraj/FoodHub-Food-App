@@ -11,6 +11,7 @@ import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Recipie from "./components/Recipie";
+import Cart from "./components/Cart";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const Instamart = lazy(() => import("./components/Instamart"));
@@ -55,6 +56,10 @@ const appRouter = createBrowserRouter([
           </Suspense>
         ),
       },
+      {
+        path : "cart",
+        element: <Cart/>
+      }
     ],
   },
 ]);

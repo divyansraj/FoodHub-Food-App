@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext";
 import { baseUrl } from "../config";
+import { useSelector } from "react-redux";
 
-
-const loggedInUser = () => {
-  //authetication api
-  return true;
-};
+// const loggedInUser = () => {
+//   //authetication api
+//   return true;
+// };
 
 const Title = () => {
   return (
@@ -23,21 +23,25 @@ const Title = () => {
 };
 
 const Header = () => {
-  const {user} = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const isonline = useOnline();
-  
+
+  const cartItems = useSelector((store) => store.cart.items);
+
   return (
     <div className="header">
-      <div className="bg-[#0b1419] flex justify-between items-center p-4 px-10">
+      <div className="bg-[#0b1419] flex justify-between items-center py-2 px-10">
         <Title />
+        <div className="absolute top-0 left-0">{isonline ? "📶" : " ⛔"}</div>
         <div>
           <ul className="nav-items flex text-white p-1">
             <li className=" m-2 font-medium cursor-pointer  ">
               <Link to={baseUrl + "/"}>Home</Link>
             </li>
             <li className=" m-2 font-medium cursor-pointer  ">
-            <Link to={baseUrl + "/recipes"}>Recipes</Link></li>
+              <Link to={baseUrl + "/recipes"}>Recipes</Link>
+            </li>
             {/* <li className=" m-2 font-medium cursor-pointer  ">Pages</li>
             <li className=" m-2 font-medium cursor-pointer  ">Blog</li> */}
             <li className=" m-2 font-medium cursor-pointer  ">
@@ -49,30 +53,33 @@ const Header = () => {
             <li className=" m-2 font-medium cursor-pointer  ">
               <Link to={baseUrl + "/instamart"}>InstaMart</Link>
             </li>
-            <li className=" m-2 font-medium cursor-pointer  ">Cart</li>
-            {/* <button className="btn">Submit Recipe</button> */}
           </ul>
         </div>
-        <h1 className="font-bold">{user.name} - {user.email}   </h1>
         <div className=" w-52 flex justify-center items-center gap-5">
-        {isLoggedIn ? (
-          <button
-            className="py-1 px-5 rounded-sm border-2 border-solid border-gray-500 text-white bg-transparent   "
-            onClick={() => setIsLoggedIn(false)}
-          >
-          LogIn
-          </button>
-        ) : (
-          <button
-            className="py-1 px-3 rounded-sm border-2 border-solid border-gray-500 text-white bg-transparent   "
-            onClick={() => setIsLoggedIn(true)}
-          >
-            LogOut
-          </button>
-        )}
-        <div>{isonline ? "📶" : " ⛔"}</div>
+          <div className="flex items-center text-stone-200 m-2 font-medium cursor-pointer ">
+          <div className="p-2 h-[20px] mx-1 bg-orange-700 rounded-t-lg   flex items-center">
+            {cartItems.length}
+          </div>
+          <Link to={baseUrl + "/cart"}>Cart</Link>
+          
+            
+          </div>
+          {isLoggedIn ? (
+            <button
+              className="py-1 px-5 rounded-sm border-2 border-solid border-gray-500 text-white bg-transparent   "
+              onClick={() => setIsLoggedIn(false)}
+            >
+              LogIn
+            </button>
+          ) : (
+            <button
+              className="py-1 px-3 rounded-sm border-2 border-solid border-gray-500 text-white bg-transparent   "
+              onClick={() => setIsLoggedIn(true)}
+            >
+              LogOut
+            </button>
+          )}
         </div>
-        
       </div>
 
       <div
@@ -85,6 +92,11 @@ const Header = () => {
             an expensive cookery book{" "}
           </h1>
           <p>Learn how to make your favorite restaurant’s dishes</p>
+          <div>
+            <h1 className="font-bold">
+              {user.name} - {user.email}{" "}
+            </h1>
+          </div>
         </div>
         <div className="hero-section-right">
           <div className="flex">

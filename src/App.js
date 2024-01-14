@@ -8,9 +8,6 @@ import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux"; 
 import store from "./utils/store";
 
-
-// const Instamart = lazy(() => import("./components/Instamart"));
-
 function App() {
   const [user, setUser] = useState({
     name: "Divyanshu",
@@ -21,6 +18,7 @@ function App() {
     //setuser
   });
   return (
+    <Provider store={store}>
     <UserContext.Provider
       value={{
         user: user,
@@ -31,6 +29,7 @@ function App() {
       <Outlet />
       <Footer />
     </UserContext.Provider>
+    </Provider>
   );
 };
 
