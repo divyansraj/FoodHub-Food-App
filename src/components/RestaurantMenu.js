@@ -6,8 +6,10 @@ import About from "./About";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { addItem ,removeItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
-
+import { useSelector } from "react-redux";
 const RestaurantMenu = () => {
+  const store = useSelector(store => store.cart.items);
+  console.log(store);
   const params = useParams();
   const { id } = params;
 
