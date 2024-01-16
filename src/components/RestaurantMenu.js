@@ -4,7 +4,7 @@ import { MenuShimmer } from "./Shimmer";
 import { IMG_URL } from "../config";
 import About from "./About";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
-import { addItem } from "../utils/cartSlice";
+import { addItem ,removeItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 
 const RestaurantMenu = () => {
@@ -18,6 +18,9 @@ const RestaurantMenu = () => {
 
   const addFoodItem = (item) => {
     dispatch(addItem(item));
+  }
+  const removeFoodItem =(item) => {
+    dispatch(removeItem(item));
   }
 
   if (!restaurant || !resTempMenu) return null;
@@ -72,11 +75,18 @@ const RestaurantMenu = () => {
                   <h4>Price information not available</h4>
                 )}
                 <p>{item?.card?.info?.description}</p>
-                <button className="bg-white rounded-md absolute bottom-1 right-10 text-sm text-orange-700 font-bold px-8 py-1 border-2 border-slate-300 hover:border-slate-600 "
+                <div className="flex rounded-md absolute bottom-1 right-10 ">
+                <button className="bg-white   text-sm text-orange-700 font-bold px-8 py-1 border-2 border-r-0 border-slate-300 hover:border-slate-600 "
                 onClick={() => addFoodItem(item)}
                 >
-                  ADD
+                +
                 </button>
+                <button className="bg-white text-sm text-orange-700 font-bold px-8 py-1 border-2 border-slate-300 hover:border-slate-600 "
+                onClick={() => removeFoodItem(item)}
+                >
+                -
+                </button></div>
+                
               </div>
 
               {item?.card?.info?.imageId ? (

@@ -1,9 +1,10 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
-import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import React, { lazy, Suspense} from "react";
+import ReactDOM from "react-dom/client";
+import HeroSection from "./components/HeroSection";
 import Body from "./components/Body";
 import About from "./components/About";
 import Error from "./components/Error";
@@ -12,7 +13,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Recipie from "./components/Recipie";
 import Cart from "./components/Cart";
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import { createBrowserRouter, RouterProvider} from "react-router-dom";
 
 const Instamart = lazy(() => import("./components/Instamart"));
 
@@ -23,18 +24,12 @@ const appRouter = createBrowserRouter([
     element: <App />,
     children: [
       {
-        index: true,
-        element: <Body />,
+        path: "/FoodHub-Food-App",
+        element: <Body/>,
       },
       {
         path: "about", // Relative path without the leading '/'
         element: <About />,
-        children: [
-          {
-            index: true,
-            element: <Profile />,
-          },
-        ],
       },
       {
         path: "contact", // Relative path without the leading '/'

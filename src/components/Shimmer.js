@@ -5,6 +5,8 @@ const newobj = {
 };
 export const Shimmer = () => {
   return (
+    <>
+    <div className="shimmer h-[50vh]"></div>
     <div className="max-w-[1280px] mx-auto my-0 pt-5">
       <h1 className=" mb-5 w-[400px] h-6 shimmer"></h1>
       <h1 className="w-[400px] h-6 mb-7 shimmer"></h1>
@@ -25,6 +27,7 @@ export const Shimmer = () => {
           ))}
       </div>
     </div>
+    </>
   );
 };
 

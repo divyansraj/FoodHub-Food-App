@@ -8,6 +8,8 @@ import useGetRestaurants from "../utils/useGetRestaurants";
 import useOnline from "../utils/useOnline";
 import UserContext from "../utils/UserContext"
 import { baseUrl } from "../config";
+import HeroSection from "./HeroSection";
+
 const Body = () => {
   const [searchTxt, setSearchTxt] = useState([]);
   const { filteredRestaurants, allRestaurants, setFilteredRestaurants } = useGetRestaurants();
@@ -25,6 +27,8 @@ const Body = () => {
   return allRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
+    <>
+    <HeroSection/>
     <div className=" max-w-[1280px] mx-auto my-0 pt-5 ">
       <h1 className="mb-5 font-semibold text-2xl">
         Restaurants with online food delivery
@@ -76,6 +80,7 @@ const Body = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 
