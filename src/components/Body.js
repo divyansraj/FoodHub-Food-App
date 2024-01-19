@@ -1,6 +1,6 @@
-import { restaurantList, swiggyData } from "../config";
+//import { restaurantList, swiggyData } from "../config";
 import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect,useContext } from "react";
+import { useState,useContext } from "react";
 import { Shimmer } from "./Shimmer";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
@@ -66,7 +66,7 @@ const Body = () => {
         />
       </div>
       <div className="flex justify-center flex-wrap gap-12 ">
-        {filteredRestaurants?.length == 0 ? (
+        {filteredRestaurants?.length === 0 ? (
           <Shimmer />
         ) : (
           filteredRestaurants.map((restaurant) => (

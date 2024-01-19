@@ -4,7 +4,7 @@ import useOnline from "../utils/useOnline";
 import { baseUrl } from "../config";
 import { useSelector } from "react-redux";
 import HeroSection from "./HeroSection";
-
+import Location from "./Location";
 // const loggedInUser = () => {
 //   //authetication api
 //   return true;
@@ -31,6 +31,7 @@ const Header = () => {
 
   return (
     <div className="header">
+    
       <div className="bg-[#0b1419] flex justify-between items-center py-2 px-10">
         <Title />
         <div className="absolute top-0 left-0">{isonline ? "📶" : " ⛔"}</div>
@@ -81,8 +82,8 @@ const Header = () => {
           )}
         </div>
       </div>
-      
-
+       
+      <Location />
     </div>
   );
 };

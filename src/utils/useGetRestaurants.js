@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 const useGetRestaurants = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [allRestaurants, setAllRestaurants] = useState([]);
-  useEffect(() => {
-    getRestaurants();
-  }, []);
 
-  const getRestaurants = async () => {
+  const location = useSelector((state) => state.location);
+  console.log("restaurantslist --> "+location);
+  useEffect(() => {
+     if (location && location.latitude && location.longitude)
+      getRestaurants(location.latitude,location.longitude);
+  },[location]);
+
+  const getRestaurants = async (latitude, longitude) => {
     try {
       const data = await fetch(
-        "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+        `https://www.swiggy.com/dapi/restaurants/list/v5?lat=${latitude}&lng=${longitude}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
       );
       const json = await data.json();
 
@@ -21,7 +26,7 @@ const useGetRestaurants = () => {
         json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants
       );
-      console.log(json?.data);
+      //console.log(json?.data);
     } catch (error) {
       console.error("Error fetching restaurants data :", error);
     }

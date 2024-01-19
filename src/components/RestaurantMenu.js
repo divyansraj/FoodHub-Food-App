@@ -2,14 +2,13 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { MenuShimmer } from "./Shimmer";
 import { IMG_URL } from "../config";
-import About from "./About";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { addItem ,removeItem } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 const RestaurantMenu = () => {
-  const store = useSelector(store => store.cart.items);
-  console.log(store);
+  // const store = useSelector(store => store.cart.items);
+  // console.log(store);
   const params = useParams();
   const { id } = params;
 
@@ -63,6 +62,8 @@ const RestaurantMenu = () => {
         </button>
       </div>
       <h1>Menu</h1>
+      {console.log(resTempMenu)}
+      {console.log(Object.values(resTempMenu))}
       {Object.values(resTempMenu).map((res) =>
         res?.card?.card?.itemCards?.map((item) => (
           <div key={item?.card?.info?.id} className="flex flex-col py-4 px-0">

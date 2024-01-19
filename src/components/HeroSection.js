@@ -1,5 +1,6 @@
 import UserContext from "../utils/UserContext";
 import { useContext } from "react";
+import Location from "./Location";
 const HeroSection = () => {
     const {user} =useContext(UserContext);
     return(
@@ -31,6 +32,7 @@ const HeroSection = () => {
             </button>
           </div>
         </div>
+        
       </div>
     )
 }
