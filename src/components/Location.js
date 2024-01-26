@@ -6,7 +6,7 @@ import LocationUpdater from '../utils/locationUpdater';
 const Location = () => {
   const dispatch = useDispatch();
   const location = useSelector((state) => state.location);
-    console.log("location.js -> "+location)
+    //console.log("location.js -> "+location)
   useEffect(() => {
     const handleGetLocation = () => {
       if (navigator.geolocation) {
@@ -34,7 +34,7 @@ const Location = () => {
 //   };
 
   return (
-    <div className='px-4'>
+    <div className='px-4 bg-[#080815]' >
       {location ? (
         <div>
           {/* <p>Latitude: {location.latitude}</p>

@@ -39,19 +39,18 @@ const LocationUpdater = () => {
 
   return (
     <div>
-      <h2>Location Updater</h2>
-      <div className="flex gap-3">
+      <div className="flex">
         {/* <label>City Name: </label> */}
         
         <input
-          className=" px-2 border-2 border-stone-400  outline-0"
+          className=" px-2 py-2 border-2 rounded-r-none rounded-md border-stone-400  outline-0 text-black"
           type="text"
           placeholder="Search for city, zip code, area..."
           value={cityName}
           onChange={(e) => setCityName(e.target.value)}
         />
         <button
-          className="px-2 rounded-md bg-slate-200 hover:bg-slate-300"
+          className="px-2 rounded-md rounded-l-none text-black bg-slate-200 hover:bg-slate-300"
           onClick={handleUpdateLocation}
         >
           Update Location

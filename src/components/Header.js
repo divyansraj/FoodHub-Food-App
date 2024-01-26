@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { baseUrl } from "../config";
 import { useSelector } from "react-redux";
-import HeroSection from "./HeroSection";
 import Location from "./Location";
 // const loggedInUser = () => {
 //   //authetication api
@@ -12,13 +11,17 @@ import Location from "./Location";
 
 const Title = () => {
   return (
-    <a href="/">
+    <div className="flex">
+      <Link to={baseUrl + "/"} className="flex">
       <img
         className=" w-48 "
         src="https://foodhub.modeltheme.com/wp-content/themes/foodhub/images/logo.png"
         alt="logo"
       />
-    </a>
+    </Link>
+    <Location/>
+    </div>
+    
   );
 };
 
@@ -34,7 +37,7 @@ const Header = () => {
     
       <div className="bg-[#0b1419] flex justify-between items-center py-2 px-10">
         <Title />
-        <div className="absolute top-0 left-0">{isonline ? "📶" : " ⛔"}</div>
+        <div data-testid="onlineStatus" className="absolute top-0 left-0">{isonline ? "📶" : " ⛔"}</div>
         <div>
           <ul className="nav-items flex text-white p-1">
             <li className=" m-2 font-medium cursor-pointer  ">
@@ -58,7 +61,7 @@ const Header = () => {
         </div>
         <div className=" w-52 flex justify-center items-center gap-5">
           <div className="flex items-center text-stone-200 m-2 font-medium cursor-pointer ">
-          <div className="p-2 h-[20px] mx-1 bg-orange-700 rounded-t-lg   flex items-center">
+          <div data-testid="cartItem" className="p-2 h-[20px] mx-1 bg-orange-700 rounded-t-lg   flex items-center">
             {cartItems.length}
           </div>
           <Link to={baseUrl + "/cart"}>Cart</Link>
@@ -83,7 +86,7 @@ const Header = () => {
         </div>
       </div>
        
-      <Location />
+      
     </div>
   );
 };

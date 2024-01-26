@@ -6,6 +6,7 @@ const RestaurantCard = ({ name, cuisines, cloudinaryImageId, avgRating }) => {
   const {user} = useContext(UserContext);
   return (
     <div className="w-64 flex justify-between gap-0.5 flex-col">
+    
       <div className=" w-64 h-44 ">
         <img
           className="w-full h-full rounded-2xl"

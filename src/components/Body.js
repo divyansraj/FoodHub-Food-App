@@ -45,6 +45,7 @@ const Body = () => {
           }}
         />
         <button
+        data-testid="searchid"
           className="rounded-r-2xl py-1 px-3 text-black border-2 border-solid outline-none bg-transparent "
           onClick={() => {
             const data = filterData(searchTxt, allRestaurants);
@@ -66,6 +67,7 @@ const Body = () => {
         />
       </div>
       <div className="flex justify-center flex-wrap gap-12 ">
+      
         {filteredRestaurants?.length === 0 ? (
           <Shimmer />
         ) : (
