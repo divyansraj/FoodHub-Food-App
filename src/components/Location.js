@@ -34,7 +34,7 @@ const Location = () => {
 //   };
 
   return (
-    <div className='px-4 bg-[#080815]' >
+    <div className='px-4 bg-[#0b1419]' >
       {location ? (
         <div>
           {/* <p>Latitude: {location.latitude}</p>

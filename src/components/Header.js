@@ -19,7 +19,7 @@ const Title = () => {
         alt="logo"
       />
     </Link>
-    <Location/>
+
     </div>
     
   );
@@ -37,6 +37,7 @@ const Header = () => {
     
       <div className="bg-[#0b1419] flex justify-between items-center py-2 px-10">
         <Title />
+        <Location/>
         <div data-testid="onlineStatus" className="absolute top-0 left-0">{isonline ? "📶" : " ⛔"}</div>
         <div>
           <ul className="nav-items flex text-white p-1">

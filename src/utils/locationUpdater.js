@@ -57,7 +57,7 @@ const LocationUpdater = () => {
         </button>
       </div>
 
-      {updatedLocation && <p>Location updated: {updatedLocation}</p>}
+      {updatedLocation && <p className="text-white">Location updated: {updatedLocation}</p>}
     </div>
   );
 };
