@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLocation, clearLocation } from '../utils/locationSlice';
 import LocationUpdater from '../utils/locationUpdater';
 
+
 const Location = () => {
   const dispatch = useDispatch();
   const location = useSelector((state) => state.location);

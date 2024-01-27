@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
+import { swiggy_menu_api_URL } from "../config";
 const useRestaurantMenu = (id) => {
   const [restaurant, setRestaurant] = useState([]);
   const [resTempMenu, setResTempMenu] = useState([]);
@@ -9,8 +10,8 @@ const useRestaurantMenu = (id) => {
 
   async function getRestaurantMenu() {
     const data = await fetch(
-      "https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9639423&lng=77.7125085&restaurantId=" +
-        id
+      swiggy_menu_api_URL 
+      + id
     );
     const json = await data.json();
     setRestaurant(json?.data?.cards[0]?.card?.card?.info);
