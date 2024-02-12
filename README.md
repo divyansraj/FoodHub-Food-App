@@ -14,16 +14,7 @@ FoodHub is a feature-rich web application built using React.js, Redux, Tailwind 
 - **Lazy Loading:** Efficiently loads components when needed, improving performance.
 - **Custom Hooks:** Optimizes code splitting and chunking through custom hooks.
 
-## Additional Features
-
-- **Hamburger Menu:** Provides seamless navigation with a home icon, enhancing overall responsiveness.
-- **Search Box:** Utilizes a live API from YouTube for real-time search results, incorporating debouncing and caching mechanisms.
-- **Video Cards:** Displays real-time data from YouTube, seamlessly integrating video display within the project interface.
-- **Comments Section:** Implements a comments section with nested comments using recursion.
-- **Live Chat:** Features a real-time live chat with addressed challenges discussed in the "Challenges" section below.
-
 ## Challenges
-
 ### Data Layer
 
 - **Getting Live Data:** Explored options for handling live or near real-time data, considering Web Sockets and API Polling.
