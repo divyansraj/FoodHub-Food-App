@@ -13,20 +13,6 @@ FoodHub is a feature-rich web application built using React.js, Redux, Tailwind 
 - **Reusable Components:** Implements reusable functional components and higher-order components for efficiency.
 - **Lazy Loading:** Efficiently loads components when needed, improving performance.
 - **Custom Hooks:** Optimizes code splitting and chunking through custom hooks.
-
-## Challenges
-### Data Layer
-
-- **Getting Live Data:** Explored options for handling live or near real-time data, considering Web Sockets and API Polling.
-
-### UI Layer
-
-- **Updating the UI:** Addressed challenges related to displaying live or near real-time data, discussed potential solutions.
-
-### Technology Stack Updates
-
-- **Frontend:** Updated the technology stack, incorporating features like a live chat and integrating YouTube APIs.
-
 ## Technology Stack
 
 - **Frontend:**
